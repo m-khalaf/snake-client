@@ -16,6 +16,13 @@ const connect = function () {
   conn.on("connect", ()=>{
     console.log("Successfully connected to game server");
     conn.write("Name: MK"); //send name to server
+    setTimeout(()=>{
+      conn.write("Move: up");
+      setTimeout(()=>{
+        conn.write("Move: up");
+      },1000);
+    },1000);
+    //conn.write("Move: up"); //ask the server to move the snake block up
   });
 
   // event handler to console data coming from the server 

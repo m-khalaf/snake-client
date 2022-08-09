@@ -1,4 +1,5 @@
 let connection;
+const{movements}=require("./constants");
 
 const setupInput = function (conn) {
   const stdin = process.stdin;
@@ -14,17 +15,12 @@ const setupInput = function (conn) {
 const handleUserInput = function (input) {
   if (input === '\u0003') {
     process.exit();
-  } else if (input === 'w') {
-    connection.write("Move: up");
-  } else if (input === 'a') {
-    connection.write("Move: left");
-  } else if (input === 's') {
-    connection.write("Move: down");
-  } else if (input === 'd') {
-    connection.write("Move: right");
-  } else if (input === 'g') {
-    connection.write("Say: nice cut my G");
-  }
+  };
+  for (const move in movements){
+    if (input ===move){
+      connection.write(movements[move]);
+    };
+  };
 
 
 };
